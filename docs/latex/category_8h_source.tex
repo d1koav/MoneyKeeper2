@@ -1,0 +1,33 @@
+\hypertarget{category_8h_source}{}\doxysection{category.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CATEGORY\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CATEGORY\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QDialog>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QtSql>}}
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }Ui \{}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{classcategory}{category}};}
+\DoxyCodeLine{9 \}}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classcategory}{category}} : \textcolor{keyword}{public} QDialog}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15   Q\_OBJECT}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21   \textcolor{keyword}{explicit} \mbox{\hyperlink{classcategory_ad4b2837c3298949e0b2e8911698d51a8}{category}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{22   \mbox{\hyperlink{classcategory}{\string~category}}();}
+\DoxyCodeLine{26   \textcolor{keywordtype}{void} \mbox{\hyperlink{classcategory_afe6babd29bdc756daac9ab420b575bbb}{parse\_serv}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{32   \textcolor{keywordtype}{void} on\_add\_cat\_clicked();}
+\DoxyCodeLine{40   \textcolor{keywordtype}{void} on\_tableView\_doubleClicked(\textcolor{keyword}{const} QModelIndex \&index);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{private}:}
+\DoxyCodeLine{43   Ui::category *ui;}
+\DoxyCodeLine{44   QSqlQueryModel *model;}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// CATEGORY\_H}}
+
+\end{DoxyCode}

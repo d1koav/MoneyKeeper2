@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.15)
+project(kurs LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+#Укажите путь до папки с библиотеками QT ("папка, куда был установлен QT"/"версия QT"/"mingw или msvc папка"/)
+set(CMAKE_PREFIX_PATH /Users/vladislavdyakov/Qt/1/5.15.2/clang_64)
+find_package(Qt5 COMPONENTS Widgets Core Gui Sql REQUIRED)
+
+file(GLOB SOURCE_FILES
+        *.cpp
+        *.h
+        *.db)
+add_executable(kurs ${SOURCE_FILES})
+target_link_libraries(kurs PRIVATE Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Sql)
+
+#install(FILES ${QM} DESTINATION bin)
+#
+#install(TARGETS kurs DESTINATION bin)
+#
+#install(FILES ${PROJECT_SOURCE_DIR}/project.db DESTINATION bin)
+#
+#install(DIRECTORY ${PROJECT_SOURCE_DIR}/documentation/ DESTINATION bin/docs/)
+#
+#install(FILES $<TARGET_FILE:Qt5::Core> DESTINATION bin)
+#install(FILES $<TARGET_FILE:Qt5::Gui> DESTINATION bin)
+#install(FILES $<TARGET_FILE:Qt5::Widgets> DESTINATION bin)
+#install(FILES $<TARGET_FILE:Qt5::Sql> DESTINATION bin)
+#
+#
+#install(FILES $<TARGET_FILE:Qt5::QSQLiteDriverPlugin> DESTINATION bin/sqldrivers)
+#
+#install(FILES $<TARGET_FILE:Qt5::QWindowsIntegrationPlugin> DESTINATION bin/platforms)
+#install(FILES $<TARGET_FILE:Qt5::QWindowsDirect2DIntegrationPlugin> DESTINATION bin/platforms)
