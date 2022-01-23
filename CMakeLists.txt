@@ -23,21 +23,27 @@ add_executable(kurs ${SOURCE_FILES})
 target_link_libraries(kurs PRIVATE Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Sql)
 #
 #FIND_PACKAGE(Doxygen)
+target_include_directories(kurs PRIVATE ./docs)
+option(BUILD_DOC "Build documentation" ON)
 
+# check if Doxygen is installed
+option(BUILD_DOC "Build documentation" ON)
+
+# check if Doxygen is installed
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
     # set input and output files
     set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
-    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.out)
+    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 
     # request to configure the file
     configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
     message("Doxygen build started")
 
-    # Note: do not put "ALL" - this builds docs together with application EVERY TIME!
-    add_custom_target( doc
+    # note the option ALL which allows to build the docs together with the application
+    add_custom_target( doc_doxygen ALL
             COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating API documentation with Doxygen"
             VERBATIM )
 else (DOXYGEN_FOUND)
@@ -47,15 +53,15 @@ endif (DOXYGEN_FOUND)
 
 
 
-
+#
 install(FILES ${QM} DESTINATION bin)
 
 install(TARGETS kurs DESTINATION bin)
 
 install(FILES ${PROJECT_SOURCE_DIR}/project.db DESTINATION bin)
-
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/documentation/ DESTINATION bin/docs/)
-
+#
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs/ DESTINATION bin/docs/)
+#
 install(FILES $<TARGET_FILE:Qt5::Core> DESTINATION bin)
 install(FILES $<TARGET_FILE:Qt5::Gui> DESTINATION bin)
 install(FILES $<TARGET_FILE:Qt5::Widgets> DESTINATION bin)
